@@ -1,0 +1,11 @@
+{
+  "name": "base-token-hunter-v2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bitquery": "node scripts/bitquery.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Base Token Hunter V2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="container">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">BASE TOKEN HUNTER · V2</p>
+      <h1>Base Token Hunter</h1>
+      <p class="muted">ترکیب داده‌های GeckoTerminal و Bitquery، با مسیر ورود توکن از Unibot Base Scanner.</p>
+    </div>
+    <button id="refreshBtn" class="primary">↻ بروزرسانی</button>
+  </header>
+
+  <section class="sources">
+    <a href="https://t.me/UnibotBaseScanner" target="_blank" rel="noopener">Unibot Base Scanner ↗</a>
+    <a href="https://www.geckoterminal.com/base" target="_blank" rel="noopener">GeckoTerminal ↗</a>
+    <a href="https://ide.bitquery.io/" target="_blank" rel="noopener">Bitquery IDE ↗</a>
+  </section>
+
+  <section class="panel scanner-input">
+    <div>
+      <strong>ورود Contract Address از Unibot</strong>
+      <p class="muted small">فعلاً به‌دلیل نبود API رسمی عمومی برای کانال، CA را از Scanner کپی کن و اینجا وارد کن. بعداً می‌توانیم یک Telegram Bot/connector امن اضافه کنیم.</p>
+    </div>
+    <div class="input-row">
+      <input id="caInput" placeholder="0x..." autocomplete="off">
+      <button id="addCaBtn">افزودن</button>
+    </div>
+    <div id="watchlist" class="watchlist"></div>
+  </section>
+
+  <section class="panel controls">
+    <div class="control"><label>حداکثر سن استخر</label>
+      <select id="maxAge"><option value="15">۱۵ دقیقه</option><option value="30" selected>۳۰ دقیقه</option><option value="60">۱ ساعت</option><option value="180">۳ ساعت</option><option value="1440">۲۴ ساعت</option></select>
+    </div>
+    <div class="control"><label>حداقل نقدینگی</label>
+      <select id="minLiquidity"><option value="0">$0</option><option value="1000">$1K</option><option value="5000" selected>$5K</option><option value="10000">$10K</option><option value="25000">$25K</option></select>
+    </div>
+    <div class="control"><label>حداقل حجم ۲۴ساعت</label>
+      <select id="minVolume"><option value="0">$0</option><option value="1000">$1K</option><option value="5000">$5K</option><option value="10000" selected>$10K</option><option value="50000">$50K</option></select>
+    </div>
+    <div class="control"><label>مرتب‌سازی</label>
+      <select id="sortBy"><option value="age">جدیدترین</option><option value="liquidity">نقدینگی</option><option value="volume">حجم</option><option value="tx">تراکنش</option></select>
+    </div>
+  </section>
+
+  <section class="statusbar"><span id="status">در حال دریافت...</span><span id="lastUpdated"></span></section>
+
+  <section class="panel table-wrap">
+    <table>
+      <thead><tr>
+        <th>منبع</th><th>توکن</th><th>سن</th><th>قیمت</th><th>نقدینگی</th><th>حجم ۲۴ساعت</th><th>معاملات</th><th>Contract</th><th>لینک</th>
+      </tr></thead>
+      <tbody id="tokenRows"></tbody>
+    </table>
+    <div id="empty" class="empty hidden">موردی با فیلترهای فعلی پیدا نشد.</div>
+  </section>
+
+  <footer>این داشبورد فقط ابزار پایش داده است و توصیه مالی یا سیستم معامله خودکار نیست.</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
